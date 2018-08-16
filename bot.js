@@ -7,7 +7,8 @@ const CONFIG = require("./public-config.json");
 const client = new AkairoClient({
   ownerID: CONFIG.owners,
   prefix: CONFIG.prefix,
-  commandDirectory: './commands/'
+  commandDirectory: './commands/',
+  listenerDirectory: './listeners/'
 }, {
   disableEveryone: true
 });

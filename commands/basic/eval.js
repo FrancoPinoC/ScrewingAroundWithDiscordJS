@@ -8,6 +8,7 @@ class EvalCommand extends Command {
     super('eval', {
       aliases: ['eval'],
       split: 'none',
+      ownerOnly: true,
       args: [
         {
           id: 'code',
@@ -17,14 +18,14 @@ class EvalCommand extends Command {
     });
   }
 
-  userPermissions(message) {
-    let owners = CONFIG.owners;
-    if(!owners.includes(message.author.id)) {
-      message.reply("Just who do you think you are.");
-      return false;
-    }
-    return true;
-  }
+  // userPermissions(message) {
+  //   let owners = CONFIG.owners;
+  //   if(!owners.includes(message.author.id)) {
+  //     message.reply("Just who do you think you are.");
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   exec(message, args) {
     let clean = text => {

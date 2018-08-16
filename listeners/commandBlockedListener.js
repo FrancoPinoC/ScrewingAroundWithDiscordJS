@@ -1,5 +1,4 @@
 const { Listener } = require('discord-akairo');
-const getRandomInt = require('../utils').getRandomInt;
 const randoNoGood = require('../utils').randoNoGood;
 
 class commandBlockedListener extends Listener {

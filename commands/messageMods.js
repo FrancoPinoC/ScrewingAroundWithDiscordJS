@@ -34,9 +34,10 @@ class MessageMods extends Command {
       for (let i = modList.length-1; i >= 0; i--) {
         let mod = modList[i];
         let modPresence = mod.presence.status;
-        if (modPresence === 'online' || modPresence === 'idle') {
+        // TODO How about a CONFIG option to turn this check or on and off, plus a command that can do that.
+        if (modPresence === 'online') {
           message.reply(
-              "There are mods online (even if idle), modmail can only be used when all mods are either offline or busy"
+              "Modmail can only be used when there are no mods online."
           );
           return false;
         }
@@ -50,7 +51,7 @@ class MessageMods extends Command {
         return false;
       }
     }
-    // Maybe add a mute role to the config and check for that, but this should be a decent last gate:
+    // Discord has a kinda fucked up permisssions hierarchy so this kinda doesn't work as expected... b
     return serverMember.hasPermission("SEND_MESSAGES");
   }
 
@@ -79,7 +80,7 @@ class MessageMods extends Command {
     let mail = args.mail;
     // First send a header with the message's info (so we can track down any spammy mofos)
     return modChannel.send(header)
-        .then(() => {return modChannel.send(mail);})
+        .then(() => {return modChannel.send(mail, {disableEveryone: true} ); })
         .then(() => {return message.reply("Your message has been sent!");})
         .catch(error => {
           console.log(error);
