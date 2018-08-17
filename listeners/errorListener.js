@@ -1,9 +1,9 @@
 const { Listener } = require('discord-akairo');
 
-class commandBlockedListener extends Listener {
+class CommandErrorListener extends Listener {
   constructor() {
-    super('ready', {
-      emitter: 'client',
+    super('error', {
+      emitter: 'commandHandler',
       eventName: 'error'
     });
   }
@@ -16,4 +16,4 @@ class commandBlockedListener extends Listener {
   }
 }
 
-module.exports = commandBlockedListener;
+module.exports = CommandErrorListener;

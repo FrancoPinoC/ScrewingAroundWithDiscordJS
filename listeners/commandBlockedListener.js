@@ -1,9 +1,9 @@
 const { Listener } = require('discord-akairo');
 const randoNoGood = require('../utils').randoNoGood;
 
-class commandBlockedListener extends Listener {
+class CommandBlockedListener extends Listener {
   constructor() {
-    super('ready', {
+    super('commandBlocked', {
       emitter: 'commandHandler',
       eventName: 'commandBlocked'
     });
@@ -14,10 +14,10 @@ class commandBlockedListener extends Listener {
       message.channel.send(`${message.author}, just who the hell do you think you are?`);
     }
     else {
+      console.log(reason);
       message.react(randoNoGood());
     }
-
   }
 }
 
-module.exports = commandBlockedListener;
+module.exports = CommandBlockedListener;

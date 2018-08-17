@@ -89,7 +89,6 @@ class MessageMods extends Command {
               "... I know I know, it's ironic, but contact one when one is available please."
           );
         })
-        .catch(console.log.bind(console));
   }
 }
 
