@@ -8,6 +8,11 @@ module.exports.getRandomInt = (min, max) => {
   return getRandomInt(min, max);
 };
 
+// Thanks to https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep  C:
+module.exports.sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 module.exports.randoNoGood = () => {
   randoInt = getRandomInt(0,5);
   let noGoodList = [
