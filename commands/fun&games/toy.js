@@ -57,10 +57,10 @@ const inputMap = new Map([
 ]);
 
 
-class ControllerCommand extends Command {
+class ToyCommand extends Command {
   constructor() {
-    super('control', {
-      aliases: ['control', 'game', 'toy'],
+    super('toy', {
+      aliases: ['toy', 'control', 'game'],
       args: [
         {
           id: 'solo',
@@ -147,6 +147,7 @@ class ControllerCommand extends Command {
   // async clearAllReactions() {
   //
   // }
+
   async clearReactions(reaction) {
     let removePromises = [];
     reaction.users.forEach(function(user) {
@@ -205,27 +206,7 @@ class ControllerCommand extends Command {
     await this.setUp(message, args);
     await this.gameLoop();
     this.destroyGame();
-    // gameMess.awaitReactions(filter, { max: 1, time: 5000, errors: ['time'] })
-    //     .then(collected => {
-    //       console.log("Hey");
-    //       const reaction = collected.first();
-    //
-    //       if (reaction.emoji.name === controller.up) {
-    //         console.log("reacted!");
-    //         this.client.game.loading = true;
-    //         this.client.gameMess.edit(texts.up).then(() => this.client.game.loading = false).catch(error => {console.log(error);});
-    //       }
-    //       else if (reaction.emoji.name === controller.down) {
-    //         this.client.game.loading = true;
-    //         this.client.gameMess.edit(texts.down).then(() => this.client.game.loading = false);
-    //       }
-    //     })
-    //     .catch(collected => {
-    //       console.log(`After a minute, only ${collected.size} out of 4 reacted.`);
-    //       message.reply('you didn\'t react with neither a thumbs up, nor a thumbs down.');
-    //       this.client.game = undefined;
-    //     });
   }
 }
 
-module.exports = ControllerCommand;
+module.exports = ToyCommand;
