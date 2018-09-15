@@ -206,6 +206,8 @@ class ToyCommand extends Command {
     await this.setUp(message, args);
     await this.gameLoop();
     this.destroyGame();
+    // Docs said I should be returning stuff if possible, so...
+    return true;
   }
 }
 
